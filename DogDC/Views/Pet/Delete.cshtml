@@ -1,0 +1,78 @@
+﻿@model DogDC.Models.Pet
+
+@{
+    ViewData["Title"] = "Delete";
+}
+ <!-- ======= Breadcrumbs ======= -->
+    <section id="breadcrumbs" class="breadcrumbs">
+        <div class="container">
+
+            <ol>
+                <li>Poista</li>
+                <li>Lemmikki</li>
+            </ol>
+            <h2>Haluatko varmasti poistaa lemmikin?</h2>
+
+        </div>
+    </section><!-- End Breadcrumbs -->
+    
+<div>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-2">
+            Nimi
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Name)
+        </dd>
+        <dt class="col-sm-2">
+            Ikä
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Age)
+        </dd>
+        <dt class="col-sm-2">
+            Ruokavalio
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Diet)
+        </dd>
+        <dt class="col-sm-2">
+            Rotu
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Breed)
+        </dd>
+        <dt class="col-sm-2">
+            Omistaja
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Customer.FirstName)
+            @Html.DisplayFor(model => model.Customer.LastName)
+        </dd>
+        <dt class="col-sm-2">
+            Ryhmä
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Group.Name)
+        </dd>
+        <dd class="col-sm-10">
+            <div class="col-lg-4 col-md-6 portfolio-item filter-card">
+            <img src="@(Model.BlobUrl !=null ? Model.BlobUrl :"https://mdbootstrap.com/img/new/standard/nature/184.jpg")" class="img-fluid" alt="...">
+            </div>
+        </dd>
+    </dl>
+
+    <form asp-action="Delete">
+        <input type="hidden" asp-for="Id" />
+        <input type="submit" value="Poista" class="btn btn-danger" /> 
+        @{
+            if (ViewBag.UserIsAdmin == 1)
+            {<a class="btn btn-light" asp-action="IndexAdmin">Takaisin</a>}
+            else
+            { <a class="btn btn-light" asp-action="Index">Takaisin</a>}
+        }
+       
+
+    </form>
+</div>

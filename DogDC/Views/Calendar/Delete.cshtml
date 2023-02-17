@@ -1,0 +1,131 @@
+﻿@model DogDC.Models.Booking
+
+@{
+    ViewData["Title"] = "Delete";
+}
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+
+<title>Portfolio Details - Multi Bootstrap Template</title>
+<meta content="" name="description">
+<meta content="" name="keywords">
+
+<!-- Favicons -->
+<link href="assets/img/favicon.png" rel="icon">
+<link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon">
+
+<!-- Google Fonts -->
+<link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
+
+<!-- Vendor CSS Files -->
+<link href="assets/vendor/animate.css/animate.min.css" rel="stylesheet">
+<link href="assets/vendor/aos/aos.css" rel="stylesheet">
+<link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+<link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+<link href="assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
+<link href="assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
+<link href="assets/vendor/remixicon/remixicon.css" rel="stylesheet">
+<link href="assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
+
+<!-- Template Main CSS File -->
+<link href="assets/css/style.css" rel="stylesheet">
+
+<!-- ======= Breadcrumbs ======= -->
+<section id="breadcrumbs" class="breadcrumbs">
+
+    <div class="container">
+        <br />
+        <h2>Haluatko varmasti poistaa varauksen?</h2>
+    </div>
+</section><!-- End Breadcrumbs -->
+<br />
+<div>
+    <form asp-action="Delete">
+
+        <dl class="row">
+            <dt class="col-sm-2">
+                Aloitusaika
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.StartTime)
+            </dd>
+            <dt class="col-sm-2">
+                Lopetusaika
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.EndTime)
+            </dd>
+            <dt class="col-sm-2">
+                Aktiviteetti
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.Utility.Name)
+            </dd>
+        </dl>
+
+
+
+        <div>
+
+            @{
+                if (ViewBag.UserIsAdmin == 1)
+                {
+                    //<a class="btn btn-danger" asp-controller="Calendar" asp-action="DeleteAdmin">Poista</a>
+                    <a class="btn btn-light" asp-action="IndexAdmin">Takaisin</a>
+                    <a asp-action="DeleteAdmin" asp-route-id="@Model?.Id">Poista</a>
+
+                }
+
+                else
+                {
+                    <div>
+                        <input type="hidden" asp-for="Id" />
+                        <input type="submit" value="Poista" class="btn btn-light" />
+                        <a class="btn btn-light" asp-action="Index">Takaisin</a>
+                    </div>
+                }
+            }
+    </form>
+
+</div>
+
+
+<!-- ======= Portfolio Details Section ======= -->
+<section id="portfolio-details" class="portfolio-details">
+    <div class="container">
+
+        <div class="row gy-4">
+
+            <div class="col-lg-8">
+                <div class="portfolio-details-slider swiper">
+                    <div class="swiper-wrapper align-items-center">
+
+                        <div class="swiper-slide">
+                            <img src="https://dogdc.blob.core.windows.net/dogdc/leluv.jpg" alt="">
+                        </div>
+                    </div>
+                    <div class="swiper-pagination"></div>
+                </div>
+            </div>
+
+            <div class="col-lg-4">
+                <div class="portfolio-info">
+                    <h3>Huomio!</h3>
+                    <ul>
+                        <li>Mikäli <strong>poistat</strong> varauksen, se poistuu kokonaan. Tämä toiminto on peruuttamaton.</li>
+                        <li><strong>Poista</strong> varaus, mikäli olet varmasti kykenemätön tulemaan varattuun palveluun.</li>
+                    </ul>
+                </div>
+                <div class="portfolio-description">
+                    <h2>Varauksen poistaminen</h2>
+                    <p>
+                        Varaus on poistettava aina sairastapauksen sattuessa tai jos asiakas on muutoin kykenemätön saapumaan varattuun palveluun. Mikäli et saa varausta poistettua ajoissa, ole yhteydessä suoraan päiväkotiin.
+                    </p>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+</section><!-- End Portfolio Details Section -->
+</div>

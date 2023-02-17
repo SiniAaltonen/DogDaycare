@@ -1,0 +1,103 @@
+﻿@model DogDC.Models.Booking
+
+@{
+    ViewData["Title"] = "Edit";
+}
+<!-- ======= Breadcrumbs ======= -->
+<section id="breadcrumbs" class="breadcrumbs">
+
+    <div class="container">
+        <br />
+        <h2>Muokkaa varausta</h2>
+    </div>
+</section><!-- End Breadcrumbs -->
+
+<hr />
+
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Edit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="Id" />
+            <div class="form-group">
+                <label asp-for="StartTime" class="control-label">Aloitusaika</label>
+                <input asp-for="StartTime" class="form-control" />
+                <span asp-validation-for="StartTime" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="EndTime" class="control-label">Lopetusaika</label>
+                <input asp-for="EndTime" class="form-control" />
+                <span asp-validation-for="EndTime" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="UtilityId" class="control-label">Aktiviteetti</label>
+                <select asp-for="UtilityId" class="form-control">
+                    <option value="">Aktiviteetti</option>
+                    <option value="1">Metsäretki</option>
+                    <option value="2">Kotieläinpuistoretki</option>
+                    <option value="3">Alin alpakkatila</option>
+                    <option value="4">Vesipuistoretki</option>
+                    <option value="5">Kynsienleikkuu</option>
+                    <option value="6">Turkin trimmaus</option>
+                    <option value="7">Hieronta</option>
+                    <option value="8">Aromaterapia</option>
+                    <option value="9">Agility</option>
+                    <option value="10">Maalaushetki</option>
+                    <option value="11">Champawn</option>
+                    <option value="12">Kielikurssi</option>
+                    <option value="13">Pääsiäisrieha</option>
+                    <option value="14">Vappukarkelot</option>
+                    <option value="15">Juhannustanssit</option>
+                    <option value="16">Pikkujoulut</option>
+                    <option value="17">Potrettikuvaus</option>
+                    <option value="18">Luokkakuvaus</option>
+                    <option value="19">Perhekuvaus</option>
+                    <option value="20">Maalari</option>
+                </select>
+            </div>
+            <br />
+
+        </form>
+        @{
+            if (ViewBag.UserIsAdmin == 1)
+            {
+                
+                <a class="btn btn-light" asp-controller="Calendar" asp-action="Edit">Muokkaa</a>
+            }
+            else
+            {
+                //<div class="form-group">
+                //    <input type="submit" value="Tallenna" class="btn btn-primary" />
+                //    <a class="btn btn-light" asp-action="Index">Takaisin</a>
+                //</div>
+                 <form asp-action="Edit">
+                        <input type="hidden" asp-for="Id" />
+                        <input type="submit" value="Muokkaa" class="btn btn-light" />
+                        <a class="btn btn-light" asp-action="Index">Takaisin</a>
+                    </form>
+            }
+        }
+    </div>
+
+    <div class="row">
+        <section id="portfolio-details" class="portfolio-details">
+            <div class="container">
+
+                <div class="row gy-4">
+
+                    <div class="col-lg-8">
+                        <div class="portfolio-details-slider swiper">
+                            <div class="swiper-wrapper align-items-center">
+                                <img src="https://dogdc.blob.core.windows.net/dogdc/mopsiRyhmäv.jpg" width="40" height="600" alt="">
+                            </div>
+                            <div class="swiper-pagination"></div>
+                        </div>
+                    </div>
+                </div>
+
+
+                @section Scripts {
+                    @{
+                        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+                    }
+                }

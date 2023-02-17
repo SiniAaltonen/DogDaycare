@@ -1,0 +1,164 @@
+﻿@model DogDC.Models.Pet
+
+@{
+    ViewData["Title"] = "Create";
+}
+<!-- ======= Breadcrumbs ======= -->
+<section id="breadcrumbs" class="breadcrumbs">
+    <div class="container">
+
+        <ol>
+            <br />
+        </ol>
+        <h2>Lisää uusi lemmikki</h2>
+
+    </div>
+</section><!-- End Breadcrumbs -->
+
+<hr />
+<!-- ======= Add Pet Section ======= -->
+<section id="portfolio-details" class="portfolio-details">
+    <div class="container">
+
+        <div class="row gy-4">
+
+            <div class="col-lg-8">
+                <div class="portfolio-details-slider swiper">
+                    <div class="swiper-wrapper align-items-center">
+
+                        <div class="swiper-slide">
+                            <img src="https://dogdc.blob.core.windows.net/dogdc/koirajaKeppiv.jpg" alt="">
+                        </div>
+                        <p>
+
+
+                        </p>
+                        <div class="swiper-slide">
+                            <img src="https://dogdc.blob.core.windows.net/dogdc/koirajaPumpkinsv.jpg" alt="">
+                        </div>
+
+                    </div>
+                    <div class="swiper-pagination"></div>
+                </div>
+            </div>
+
+            <div class="col-lg-4">
+                <div class="portfolio-info">
+                    <h3>Täytä lemmikin tiedot</h3>
+                    <ul>
+                        <div class="row">
+                            <div class="col-md-4">
+                                <form asp-action="Create">
+                                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                                    <div class="form-group">
+                                        <label asp-for="Name" class="control-label">Nimi</label>
+                                        <input asp-for="Name" class="form-control" />
+                                        <span asp-validation-for="Name" class="text-danger"></span>
+                                    </div>
+                                    <div class="form-group">
+                                        <label asp-for="Age" class="control-label">Ikä</label>
+                                        <input asp-for="Age" class="form-control" />
+                                        <span asp-validation-for="Age" class="text-danger"></span>
+                                    </div>
+                                    <div class="form-group">
+                                        <label asp-for="Diet" class="control-label">Ruokavalio</label>
+                                        <input asp-for="Diet" class="form-control" />
+                                        <span asp-validation-for="Diet" class="text-danger"></span>
+                                    </div>
+                                    <div class="form-group">
+                                        <label asp-for="Breed" class="control-label">Rotu</label>
+                                        <input asp-for="Breed" class="form-control" />
+                                        <span asp-validation-for="Breed" class="text-danger"></span>
+                                    </div>
+                                    <div class="form-group">
+                                        <label asp-for="GroupId" class="control-label">Ryhmä</label>
+                                        <select asp-for="GroupId" class="form-control">
+                                            <option value="1">Pennut</option>
+                                            <option value="2">Aikuiset</option>
+                                            <option value="3">Seniorit</option>
+                                        </select>
+                                    </div>
+                                    <div class="form-group">
+                                        <input type ="hidden" id="CustomerId" name="CustomerId" class="form-control" value="@ViewBag.CustomerId"></input>
+                                    </div>
+                                    <div class="form-group">
+                                        <label asp-for="BlobUrl" class="control-label">Lemmikin kuva (url)</label>
+                                        <input asp-for="BlobUrl" class="form-control" />
+                                        <span asp-validation-for="BlobUrl" class="text-danger"></span>
+                                    </div>
+                                    <br />
+                                    <div class="form-group">
+                                        <input type="submit" value="Tallenna" class="btn btn-primary" />
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </ul>
+                </div>
+                <div class="portfolio-description">
+                    <h2>Muista täyttää tiedot tarkasti</h2>
+                    <p>
+                        Huolellisesti täytetyt tiedot takaavat sen, että koirasi saa päiväkodissa juuri oikeaa hoitoa kuten esimerkiksi oman ruokavalionsa. Olettehan yhteydessä meihin, mikäli jokin kohta aiheuttaa teille haasteita.
+                    </p>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+</section><!-- End of the Add Pet Section -->
+@*<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="Name" class="control-label">Nimi</label>
+                <input asp-for="Name" class="form-control" />
+                <span asp-validation-for="Name" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Age" class="control-label">Ikä</label>
+                <input asp-for="Age" class="form-control" />
+                <span asp-validation-for="Age" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Diet" class="control-label">Ruokavalio</label>
+                <input asp-for="Diet" class="form-control" />
+                <span asp-validation-for="Diet" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Breed" class="control-label">Rotu</label>
+                <input asp-for="Breed" class="form-control" />
+                <span asp-validation-for="Breed" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="GroupId" class="control-label">Ryhmän ID</label>
+                <select asp-for="GroupId" class ="form-control" asp-items="ViewBag.GroupId"></select>
+            </div>
+            <div class="form-group">
+                <label asp-for="CustomerId" class="control-label">Omistajan ID</label>
+                <select asp-for="CustomerId" class ="form-control" asp-items="ViewBag.CustomerId"></select>
+            </div>
+            <div class="form-group">
+                <label asp-for="BlobUrl" class="control-label">Lemmikin kuva (url)</label>
+                <input asp-for="BlobUrl" class="form-control" />
+                <span asp-validation-for="BlobUrl" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Luo" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Takaisin</a>
+    <a class="btn btn-light" asp-controller="Pet" asp-action="IndexAdmin">Admin</a>
+</div>*@
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+    }
+

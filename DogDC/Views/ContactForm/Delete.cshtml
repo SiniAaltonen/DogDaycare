@@ -1,0 +1,54 @@
+﻿@model DogDC.Models.ContactForm
+
+@{
+    ViewData["Title"] = "Delete";
+}
+<!-- ======= Breadcrumbs ======= -->
+<section id="breadcrumbs" class="breadcrumbs">    
+   
+    <div class="container">
+        <br />
+    <h2>Haluatko varmasti poistaa viestin?</h2>
+    </div>
+</section><!-- End Breadcrumbs -->
+<div>
+    <hr />
+    <dl class="row">
+        <dt class = "col-sm-2">
+            Nimi
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Name)
+        </dd>
+        <dt class = "col-sm-2">
+            Sähköposti
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Email)
+        </dd>
+        <dt class = "col-sm-2">
+            Aihe
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Subject)
+        </dd>
+        <dt class = "col-sm-2">
+            Viesti
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Message)
+        </dd>
+        <dt class = "col-sm-2">
+            Saapunut
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Timestamp)
+        </dd>
+    </dl>
+    
+    <form asp-action="Delete">
+        <input type="hidden" asp-for="Id" />
+        <input type="submit" value="Poista" class="btn btn-danger" /> |
+        <a asp-action="Index">Takaisin</a>
+    </form>
+</div>

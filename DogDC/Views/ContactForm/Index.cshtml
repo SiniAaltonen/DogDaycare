@@ -1,0 +1,50 @@
+﻿@model IEnumerable<DogDC.Models.ContactForm>
+
+@{
+    ViewData["Title"] = "Index";
+}
+<!-- ======= Breadcrumbs ======= -->
+<section id="breadcrumbs" class="breadcrumbs">    
+   
+    <div class="container">
+        <br />
+    <h2>Yhteydenotot</h2>
+    </div>
+</section><!-- End Breadcrumbs -->
+
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                Nimi
+            </th>
+            <th>
+                Aihe
+            </th>
+            <th>
+                Saapunut
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Subject)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Timestamp)
+            </td>
+            <td>
+                <a asp-action="Details" asp-route-id="@item.Id">Avaa</a> |
+                <a asp-action="Delete" asp-route-id="@item.Id">Poista</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

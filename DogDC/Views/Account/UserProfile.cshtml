@@ -1,0 +1,123 @@
+﻿@model DogDC.Models.UserProfile
+
+<head>
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+
+    <title>Portfolio Details - Multi Bootstrap Template</title>
+    <meta content="" name="description">
+    <meta content="" name="keywords">
+
+    <!-- Favicons -->
+    <link href="assets/img/favicon.png" rel="icon">
+    <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon">
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
+
+    <!-- Vendor CSS Files -->
+    <link href="assets/vendor/animate.css/animate.min.css" rel="stylesheet">
+    <link href="assets/vendor/aos/aos.css" rel="stylesheet">
+    <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+    <link href="assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
+    <link href="assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
+    <link href="assets/vendor/remixicon/remixicon.css" rel="stylesheet">
+    <link href="assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
+
+    <!-- Template Main CSS File -->
+    <link href="assets/css/style.css" rel="stylesheet">
+
+</head>
+
+<div>
+    @{
+        if (Model.Customer.IsAdmin == 1)
+        {
+
+            <section class="vh-100" style="background-color: #caa8a8;">
+                <div class="container py-5 h-100">
+                    <div class="row d-flex justify-content-center align-items-center h-100">
+                        <div class="col col-md-9 col-lg-7 col-xl-5">
+                            <div class="card" style="width: 700px; height: 350px; border-radius: 15px;">
+                                <div class="card-body p-4">
+                                    <div class="d-flex text-black">
+                                        <div class="flex-shrink-0">
+                                            <img src="https://dogdc.blob.core.windows.net/dogdc/pawFavicon.png"
+                                             alt="" class="img-fluid"
+                                             style="width: 180px; border-radius: 10px;">
+                                        </div>
+                                        <div class="flex-grow-1 ms-3">
+                                            <h5 class="mb-1">
+                                                @Html.DisplayFor(model => model.Customer.FirstName)
+                                                @Html.DisplayFor(model => model.Customer.LastName)
+                                            </h5>
+                                            <p class="mb-2 pb-1" style="color: #caa8a8;">@Model.Email</p>
+                                            <p class="mb-2">@Html.DisplayFor(model => model.Customer.Phone)</p>
+                                            <p class="mb-2">@Html.DisplayFor(model => model.Customer.Address)</p>
+                                            <p class="mb-2">@Html.DisplayFor(model => model.Customer.Zipcode)</p>
+                                            <p class="mb-2">@Html.DisplayFor(model => model.Customer.City)</p>
+
+                                            <a class="btn btn-light" asp-controller="Pet" asp-action="IndexAdmin">Lemmikit</a>
+                                            <a class="btn btn-light" asp-controller="Customer" asp-action="Index">Asiakkaat</a>
+                                            <a class="btn btn-light" asp-controller="Calendar" asp-action="IndexAdmin">Varaukset</a>
+                                            <a class="btn btn-light" asp-controller="Utility" asp-action="Index">Palvelut</a>
+                                            <p></p>
+                                            <a class="btn btn-light" asp-controller="ContactForm" asp-action="Index">Yhteydenotot</a>
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+            </section>
+
+
+        }
+
+        else
+        {
+
+            <section class="vh-100" style="background-color: #caa8a8;">
+                <div class="container py-5 h-100">
+                    <div class="row d-flex justify-content-center align-items-center h-100">
+                        <div class="col col-md-9 col-lg-7 col-xl-5">
+                            <div class="card" style="width: 650px; height: 300px; border-radius: 15px;">
+                                <div class="card-body p-4">
+                                    <div class="d-flex text-black">
+                                        <div class="flex-shrink-0">
+                                            <img src="https://dogdc.blob.core.windows.net/dogdc/pawFavicon.png"
+                                             alt="" class="img-fluid"
+                                             style="width: 180px; border-radius: 10px;">
+                                        </div>
+                                        <div class="flex-grow-1 ms-3">
+                                            <h5 class="mb-1">
+                                                @Html.DisplayFor(model => model.Customer.FirstName)
+                                                @Html.DisplayFor(model => model.Customer.LastName)
+                                            </h5>
+
+                                            <p class="mb-2 pb-1" style="color: #caa8a8;">@Model.Email</p>
+                                            <p class="mb-2">@Html.DisplayFor(model => model.Customer.Phone)</p>
+                                            <p class="mb-2">@Html.DisplayFor(model => model.Customer.Address)</p>
+                                            <p class="mb-2">@Html.DisplayFor(model => model.Customer.Zipcode)</p>
+                                            <p class="mb-2">@Html.DisplayFor(model => model.Customer.City)</p>
+
+                                            <a class="btn btn-light" asp-controller="Pet" asp-action="Index">Omat lemmikit</a>
+                                            <a class="btn btn-light" asp-controller="Calendar" asp-action="Index">Omat varaukset</a>
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+            </section>
+
+        }
+    }
+</div>
+
+
+
+

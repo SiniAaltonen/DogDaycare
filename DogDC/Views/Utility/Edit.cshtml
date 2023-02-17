@@ -1,0 +1,134 @@
+﻿@model DogDC.Models.Utility
+
+@{
+    ViewData["Title"] = "Edit";
+}
+<head>
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+
+    <title>Portfolio Details - Multi Bootstrap Template</title>
+    <meta content="" name="description">
+    <meta content="" name="keywords">
+
+    <!-- Favicons -->
+    <link href="assets/img/favicon.png" rel="icon">
+    <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon">
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
+
+    <!-- Vendor CSS Files -->
+    <link href="assets/vendor/animate.css/animate.min.css" rel="stylesheet">
+    <link href="assets/vendor/aos/aos.css" rel="stylesheet">
+    <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+    <link href="assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
+    <link href="assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
+    <link href="assets/vendor/remixicon/remixicon.css" rel="stylesheet">
+    <link href="assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
+
+    <!-- Template Main CSS File -->
+    <link href="assets/css/style.css" rel="stylesheet">
+
+</head>
+ <!-- ======= Top Bar ======= -->
+    <section id="breadcrumbs" class="breadcrumbs">
+      <div class="container">
+
+        <ol>
+          <li>Haastavampaankin makuun</li>
+          <li>Palvelut</li>
+        </ol>
+        <h2>Muokkaa palvelua</h2>
+
+      </div>
+    </section><!-- End Top Bar -->
+
+@*<h4>Muokkaa palvelua</h4>*@
+
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Edit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="Id" />
+            <div class="form-group">
+                <label asp-for="Name" class="control-label">Nimi</label>
+                <input asp-for="Name" class="form-control" />
+                <span asp-validation-for="Name" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Description" class="control-label">Palvelun kuvaus</label>
+                <input asp-for="Description" class="form-control" />
+                <span asp-validation-for="Description" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Price" class="control-label">Hinta</label>
+                <input asp-for="Price" class="form-control" />
+                <span asp-validation-for="Price" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="CategoryId" class="control-label">Kategoria</label>
+             @*   <select asp-for="CategoryId" class="form-control" asp-items="ViewBag.CategoryId"></select>*@
+                    <select asp-for="CategoryId" class ="form-control">
+                    <option value="1">Retket</option>
+                    <option value="2">Hoidot</option>
+                    <option value="3">Aktiviteetit</option>
+                    <option value="4">Teemapäivät</option>
+                    <option value="5">Kuvaukset</option>
+                </select>
+                <span asp-validation-for="CategoryId" class="text-danger"></span>
+            </div>
+            <br />
+            <div class="form-group">
+                <input type="submit" value="Tallenna" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+<br />
+<div>
+    <a asp-action="Index">Takaisin</a>
+</div>
+       <!-- ======= Portfolio Details Section ======= -->
+    <section id="portfolio-details" class="portfolio-details">
+      <div class="container">
+
+        <div class="row gy-4">
+
+          <div class="col-lg-8">
+            <div class="portfolio-details-slider swiper">
+              <div class="swiper-wrapper align-items-center">
+
+                <div class="swiper-slide">
+                  <img src="https://dogdc.blob.core.windows.net/dogdc/KaksiCorgiav.jpg" alt="">
+                </div>
+              </div>
+              <div class="swiper-pagination"></div>
+            </div>
+          </div>
+
+          <div class="col-lg-4">
+            <div class="portfolio-info">
+              <h3>Muokkaus</h3>
+              <ul>
+                <li>Muokkaa palvelua  <strong>vain</strong>, jos varmasti tahdot muokata palvelua. Voit muokata esimerkiksi palvelun nimeä, kuvausta, hintaa ja kategoriaa.</li>
+               @* <li><strong>Älä</strong> poista, ellet ole varma asiasta.</li>*@
+              </ul>
+            </div>
+           @* <div class="portfolio-description">
+              <h2>Poistamalla palvelun</h2>
+              <p>
+               Olet vastuussa sen poistamisesta. Älä siis tee tätä toimintoa, ellet ole asiasta aivan varma. Käytössä olevia palveluita ei saa poistaa missään nimessä.
+              </p>
+            </div>*@
+          </div>
+
+        </div>
+
+      </div>
+    </section><!-- End Portfolio Details Section -->
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
